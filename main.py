@@ -33,7 +33,7 @@ for i in range(len(univList)):
 import csv
 with open('univData.csv', 'w', newline='') as f:
     writer = csv.writer(f)
-    writer.writerow(['univName', 'link', 'univRequirementDetail', 'univCourse', 'toefl', 'ielts', 'det', 'awardee'])
+    writer.writerow(['univName', 'univRequirementDetail', 'univCourse', 'toefl', 'ielts', 'det', 'awardee', 'qsRanking', 'location', 'link'])
     writer.writerows(result)
 
 

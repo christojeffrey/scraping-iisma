@@ -1,5 +1,7 @@
+import csv
 import re
 import requests
+
 # return consist of university name, link, requirement, course, TOEFL iBT score, IELTS score, DET score
 def getUnivData(link):
     # get the text
@@ -75,9 +77,23 @@ def getUnivData(link):
         # remove &nbsp; if exist
         awardee[0] = re.sub(r'&nbsp;', '', awardee[0])
         
-    
+    # QS World Ranking
+    # Open qsWorldRanking.csv
+    with open('qsWorldRanking.csv', 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+
+        # get the line
+        for line in csv_reader:
+            # if the university name is in the line, then get the ranking
+            if univName in line[1]:
+                univRanking = line[0]
+                location = line[3]
+                break
+            else:
+                univRanking = 'No ranking'
+                location = 'No location'
 
 
 
     # return the result
-    return [univName, link, univRequirement[0], univCourse, toefl[0], ielts[0], det[0], awardee[0]]
+    return [univName, univRequirement[0], univCourse, toefl[0], ielts[0], det[0], awardee[0], univRanking, location, link]
