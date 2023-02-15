@@ -16,6 +16,7 @@ def getUnivData(link):
 
 # <title>S06. Yale University &#8211; IISMA</title>
     univName = re.findall(r'<title>(.*?) &#8211; IISMA</title>', x.text)
+    univName = re.sub(r'...\. ', '' , univName[0])
 
     # if univRequirement is empty, then it means that the university doesn't have any requirement
     if not univRequirement:
@@ -79,4 +80,4 @@ def getUnivData(link):
 
 
     # return the result
-    return [univName[0], link, univRequirement[0], univCourse, toefl[0], ielts[0], det[0], awardee[0]]
+    return [univName, link, univRequirement[0], univCourse, toefl[0], ielts[0], det[0], awardee[0]]

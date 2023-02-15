@@ -16,8 +16,6 @@ for i in y:
 
 
 
-
-
 # flatten
 univList = [item for sublist in univList for item in sublist]
 
